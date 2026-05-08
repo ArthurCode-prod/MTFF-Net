@@ -1,0 +1,29 @@
+seed: 42
+
+dataset:
+  datetime_column: datetime
+  target_prefixes: ["crack_", "rebar_"]
+  feature_prefixes: ["crack_", "rebar_", "temperature_", "environment_"]
+  extra_feature_columns: ["water_level", "rainfall_8h", "rainfall_24h", "rainfall_72h", "day_sin", "day_cos", "hour_sin", "hour_cos"]
+  window: 21
+  horizon: 6
+  train_ratio: 0.70
+  val_ratio: 0.15
+
+model:
+  d_model: 64
+  n_heads: 4
+  n_layers: 2
+  dropout: 0.15
+  max_len: 128
+  residual_forecast: true
+
+optim:
+  epochs: 130
+  batch_size: 64
+  learning_rate: 0.001
+  weight_decay: 0.0001
+  patience: 12
+  smooth_weight: 0.005
+  grad_clip: 1.0
+

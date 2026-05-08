@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mtff-net"
+version = "0.1.0"
+description = "Multi-task temporal fusion network for joint crack-width and rebar-stress forecasting."
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+  {name = "Binbin Liu"},
+  {name = "Mingming Wang"},
+  {name = "Xiaolei Zhu"},
+  {name = "Wanbo Zhang"}
+]
+keywords = [
+  "structural health monitoring",
+  "crack prediction",
+  "rebar stress",
+  "multi-task learning",
+  "temporal fusion"
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence"
+]
+dependencies = [
+  "numpy>=1.23",
+  "pandas>=1.5",
+  "scikit-learn>=1.2",
+  "torch>=2.0",
+  "PyYAML>=6.0",
+  "tqdm>=4.64"
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0", "ruff>=0.4"]
+db = ["SQLAlchemy>=2.0"]
+
+[project.urls]
+Homepage = "https://github.com/ArthurCode-prod/MTFF-Net"
+Repository = "https://github.com/ArthurCode-prod/MTFF-Net"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+

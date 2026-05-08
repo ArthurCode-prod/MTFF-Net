@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use MTFF-Net, please cite the associated manuscript and this software record."
+title: "MTFF-Net: Multi-Task Temporal Fusion for Crack and Rebar-Stress Forecasting"
+version: 0.1.0
+date-released: 2026-05-08
+url: "https://github.com/ArthurCode-prod/MTFF-Net"
+authors:
+  - family-names: Liu
+    given-names: Binbin
+  - family-names: Wang
+    given-names: Mingming
+  - family-names: Zhu
+    given-names: Xiaolei
+  - family-names: Zhang
+    given-names: Wanbo
+license: MIT
+
