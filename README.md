@@ -6,7 +6,8 @@ model uses a shared temporal encoder with task-specific residual heads so that
 crack and steel-stress responses are learned together while preserving separate
 output channels for each sensor group.
 
-The real monitoring dataset used in the study is not included because it is subject to
+This repository accompanies the associated crack--rebar joint-forecasting manuscript. The real
+monitoring dataset used in the study is not included because it is subject to
 project confidentiality and data-owner restrictions. The small toy data under
 `data/sample/` are provided only to validate the code path and are not used for
 paper experiments.
@@ -22,7 +23,7 @@ MTFF-Net/
   scripts/build_dataset.py      # CSV or database table to supervised arrays
   scripts/train.py              # Train MTFF-Net on prepared arrays
   scripts/evaluate.py           # Evaluate a saved checkpoint
-  src/mtff_net/                 # Reusable Python package
+  src/mtff_net/                 # Reusable Python package, including spatial helpers
 ```
 
 ## Installation
@@ -99,6 +100,33 @@ The training script writes a checkpoint, per-group metrics, and prediction CSVs
 to the selected output directory. Reported manuscript results should always be
 computed from the private measured dataset, not from the toy sample.
 
+## Optional Spatial Context Features
+
+When a project has verified plan-based crack--rebar associations, MTFF-Net can
+append inverse-distance contextual features without creating synthetic target
+observations:
+
+```python
+from mtff_net.spatial import SpatialPair, append_spatial_context_features
+
+pairs = [
+    SpatialPair("crack_J01-01", "rebar_R02-02", 15.0),
+    SpatialPair("crack_J02-05", "rebar_R02-03", 5.2),
+]
+
+X_augmented, feature_columns_augmented = append_spatial_context_features(
+    X,
+    feature_columns,
+    crack_columns=["crack_J01-01", "crack_J02-05"],
+    rebar_columns=["rebar_R02-02", "rebar_R02-03"],
+    pairs=pairs,
+)
+```
+
+These features are intended for ablation or project-specific extensions. They
+should be used only when the distance table is defensible from engineering
+layout information.
+
 ## Citation
 
 If you use this code, please cite the associated manuscript when it becomes
@@ -112,4 +140,3 @@ available and include the repository URL:
   url    = {https://github.com/ArthurCode-prod/MTFF-Net}
 }
 ```
-
