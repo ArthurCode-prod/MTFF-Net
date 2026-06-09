@@ -6,8 +6,7 @@ model uses a shared temporal encoder with task-specific residual heads so that
 crack and steel-stress responses are learned together while preserving separate
 output channels for each sensor group.
 
-This repository accompanies the manuscript submitted to *Buildings*. The real
-monitoring dataset used in the study is not included because it is subject to
+The real monitoring dataset used in the study is not included because it is subject to
 project confidentiality and data-owner restrictions. The small toy data under
 `data/sample/` are provided only to validate the code path and are not used for
 paper experiments.
